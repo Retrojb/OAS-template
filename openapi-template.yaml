@@ -1,0 +1,99 @@
+openapi: 3.0.0
+info:
+  description: >
+    PH
+  title: PH
+  version: '1.0'
+  termsOfService: ''
+  contact:
+    email: 'api@website.com'
+  license:
+    name: 'Apache 2.0'
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+    
+tags:
+- name: PH
+  description: PH
+  
+servers:
+  - url: '{protocol}://{environment}.website.com'
+    variables:
+      environment:
+        default: api
+        enum: # Use to restrict to certain values
+          - api # Production
+          - api.dev # Development 
+          - api.staging
+      protocol:
+        default: https
+        enum:
+          - http
+          - https
+paths:
+  /ph:
+    get:
+      tags:
+      - PH
+      summary: PH
+      operationId: readPH
+      responses:
+        "200": 
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+components:
+  schemas:
+    PH:
+      type: object
+      properties:
+        PH1:
+          type: integer
+          nullable: false
+          example: 123-456-789-1011
+        PH2:
+          type: string
+          nullable: false
+          example: ''
+          
+  responses:
+    200:
+      description: OK
+      # content:
+      #   application/json:
+      #     schema:
+      #       $ref: '#/components/schemas/PH'
+    201:
+    # Response body reference a schema 
+      description: CREATED
+      # content:
+      #   application/json:
+      #     schema:
+      #       $ref: '#/components/schemas/PH'
+    204:
+      description: Resource was SUCCESSFULLY DELETED
+    400:
+      description: Bad Request
+      # content:
+      #   application/json:
+      #     schema:
+      #       $ref: '#/components/schemas/PH'
+    401:
+      description: Authorization Error 
+      # content:
+      #   application/json:
+      #     schema:
+      #       $ref: '#/components/schemas/PH'
+    404:
+      description: The requested resources was not found
+      # content:
+      #   application/json:
+      #     schema:
+      #       $ref: '#/components/schemas/PH'
+    409:
+      description: Conflict creating Book
+      # content:
+      #   application/json:
+      #     schema:
+      #       $ref: "#/components/schemas/PH"
+    500:
+      description: Unexpected Error
